@@ -32,7 +32,7 @@
 </template>
 
 <script>
-import BlogComponents from '@/components/BlogComponents.vue'
+import BlogComponents from '@/components/BlogComponent.vue'
 
 export default {
   name: 'AdminView',

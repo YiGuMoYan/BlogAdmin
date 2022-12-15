@@ -83,25 +83,31 @@
       <el-table
         :data="tableData"
         stripe
-        style="width: 100%">
+        style="width: 100%"
+        border>
         <el-table-column
           prop="id"
           label="id"
-          width="40">
+          width="40"
+          header-align="center"
+          align="center">
         </el-table-column>
         <el-table-column
           prop="title"
           label="标题"
-          width="180">
+          width="180"
+          header-align="center">
         </el-table-column>
         <el-table-column
           prop="time"
           label="时间"
-          width="180">
+          width="180"
+          header-align="center">
         </el-table-column>
         <el-table-column
           prop="classification"
-          label="分类">
+          label="分类"
+          header-align="center">
           <template slot-scope="tagScope">
             <el-tag v-for="(tag, index) in tagScope.row.classification" :key="index" class="tag">{{ tag }}</el-tag>
           </template>
@@ -109,7 +115,9 @@
         <el-table-column
           fixed="right"
           label="操作"
-          width="200">
+          width="200"
+          header-align="center"
+          align="center">
           <template slot-scope="scope">
             <el-button
               size="mini"

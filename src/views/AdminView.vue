@@ -12,19 +12,18 @@
           </el-menu-item>
           <el-menu-item index="2">
             <i class="el-icon-menu"></i>
-            <span slot="title">账号</span>
+            <span slot="title">一言</span>
           </el-menu-item>
         </el-menu>
       </el-aside>
       <el-container>
         <el-header class="head">
-          <div v-if="key === '1'">
-            博客
-          </div>
-          <div v-else-if="key === '2'">账号</div>
+          <div v-if="key === '1'">博客</div>
+          <div v-else-if="key === '2'">一言</div>
         </el-header>
         <el-main>
-          <BlogComponents/>
+          <div v-if="key === '1'"><BlogComponents/></div>
+          <div v-else-if="key === '2'"><HitokotoComponent/></div>
         </el-main>
       </el-container>
     </el-container>
@@ -33,10 +32,14 @@
 
 <script>
 import BlogComponents from '@/components/BlogComponent.vue'
+import HitokotoComponent from '@/components/HitokotoComponent.vue'
 
 export default {
   name: 'AdminView',
-  components: { BlogComponents },
+  components: {
+    HitokotoComponent,
+    BlogComponents
+  },
   data () {
     return {
       isCollapse: false,

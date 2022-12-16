@@ -42,7 +42,7 @@ export default {
           password: that.password
         }
       }).then(function (res) {
-        console.log(res)
+        document.cookie = 'login=true'
         that.$router.push('/admin')
       })
     },

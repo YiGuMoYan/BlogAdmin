@@ -31,26 +31,6 @@
         </el-form>
       </el-dialog>
       <el-dialog
-        title="提示"
-        :visible.sync="successDialog"
-        width="30%">
-        <el-result icon="success" title="成功">
-          <template slot="extra">
-            <el-button type="primary" size="medium" @click="successDialogConfirm">确认</el-button>
-          </template>
-        </el-result>
-      </el-dialog>
-      <el-dialog
-        title="提示"
-        :visible.sync="errorDialog"
-        width="30%">
-        <el-result icon="error" title="错误">
-          <template slot="extra">
-            <el-button type="primary" size="medium" @click="errorDialogConfirm">返回</el-button>
-          </template>
-        </el-result>
-      </el-dialog>
-      <el-dialog
         title="编辑博客"
         :visible.sync="editDialog"
         width="80%">
@@ -65,7 +45,8 @@
             <el-date-picker
               v-model="editForm.time"
               type="datetime"
-              placeholder="选择日期时间">
+              placeholder="选择日期时间"
+              value-format="yyyy-MM-dd HH:mm:ss">
             </el-date-picker>
           </el-form-item>
           <el-form-item label="博客">
@@ -147,8 +128,6 @@ export default {
   data () {
     return {
       dialogVisible: false,
-      successDialog: false,
-      errorDialog: false,
       editDialog: false,
       tableData: [],
       form: {
@@ -190,9 +169,7 @@ export default {
         }
       }).then(function (res) {
         that.editForm = res.data.data
-        that.editForm = res.data.data
         that.editDialog = true
-        console.log(that.editForm)
       })
     },
     handleDelete (index, row) {
@@ -206,18 +183,23 @@ export default {
       })
     },
     onSubmit () {
-      this.form.time = this.$moment().format('yyyy-MM-DD hh:mm:ss')
+      this.form.time = this.$moment().format('YYYY-MM-DD HH:mm:ss')
       const that = this
-      console.log(that.form)
       axios({
         url: 'http://127.0.0.1:8080/markdown/insertMarkdown',
         method: 'post',
         data: that.form
       }).then(function (res) {
         if (res.data.data) {
-          that.successDialog = true
+          that.$message({
+            message: '插入成功',
+            type: 'success'
+          })
         } else {
-          that.errorDialog = true
+          that.$message({
+            message: '插入失败',
+            type: 'success'
+          })
         }
       })
     },
@@ -229,17 +211,8 @@ export default {
         reader.readAsText(fileContent, 'utf-8')
         reader.onload = (e) => {
           that.form.markdown = e.target.result
-          console.log(that.form.markdown)
         }
       }
-    },
-    successDialogConfirm () {
-      this.successDialog = false
-      this.dialogVisible = false
-      this.getTableData()
-    },
-    errorDialogConfirm () {
-      this.errorDialog = false
     },
     cancelDialog () {
       this.dialogVisible = false
@@ -267,6 +240,10 @@ export default {
             markdown: '',
             time: ''
           }
+          that.$message({
+            message: '成功',
+            type: 'success'
+          })
         }
       })
     }

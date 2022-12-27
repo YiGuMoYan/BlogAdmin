@@ -136,7 +136,6 @@ export default {
       })
     },
     handleEdit (index, row) {
-      console.log(row)
       this.editVisible = true
       this.editData.id = row.id
       this.editData.say = row.say

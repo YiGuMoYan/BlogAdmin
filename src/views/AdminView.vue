@@ -22,6 +22,10 @@
             <i class="el-icon-menu"></i>
             <span slot="title">时间轴</span>
           </el-menu-item>
+          <el-menu-item index="5">
+            <i class="el-icon-menu"></i>
+            <span slot="title">关于</span>
+          </el-menu-item>
         </el-menu>
       </el-aside>
       <el-container>
@@ -30,12 +34,14 @@
           <div v-else-if="key === '2'">一言</div>
           <div v-else-if="key === '3'">图床</div>
           <div v-else-if="key === '4'">时间轴</div>
+          <div v-else-if="key === '5'">关于</div>
         </el-header>
         <el-main>
           <div v-if="key === '1'"><BlogComponents/></div>
           <div v-else-if="key === '2'"><HitokotoComponent/></div>
           <div v-else-if="key === '3'"><ImageFileComponent/></div>
           <div v-else-if="key === '4'"><TimelineComponent/></div>
+          <div v-else-if="key === '5'"><AboutComponent/></div>
         </el-main>
       </el-container>
     </el-container>
@@ -47,10 +53,12 @@ import BlogComponents from '@/components/BlogComponent.vue'
 import HitokotoComponent from '@/components/HitokotoComponent.vue'
 import ImageFileComponent from '@/components/ImageFileComponent.vue'
 import TimelineComponent from '@/components/TimelineComponent.vue'
+import AboutComponent from '@/components/AboutComponent.vue'
 
 export default {
   name: 'AdminView',
   components: {
+    AboutComponent,
     TimelineComponent,
     ImageFileComponent,
     HitokotoComponent,
@@ -59,7 +67,7 @@ export default {
   data () {
     return {
       isCollapse: false,
-      key: '3'
+      key: '1'
     }
   },
   methods: {

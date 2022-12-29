@@ -198,7 +198,7 @@ export default {
         } else {
           that.$message({
             message: '插入失败',
-            type: 'success'
+            type: 'error'
           })
         }
       })

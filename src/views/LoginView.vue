@@ -35,7 +35,7 @@ export default {
     login () {
       const that = this
       axios({
-        url: 'http://127.0.0.1:8080/account/login',
+        url: that.$url + 'account/login',
         method: 'post',
         params: {
           id: that.id,

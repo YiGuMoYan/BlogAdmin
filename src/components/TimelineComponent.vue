@@ -111,7 +111,7 @@ export default {
       const that = this
       axios({
         method: 'get',
-        url: 'http://127.0.0.1:8080/timeline/selectAllTimeline'
+        url: that.$url + 'timeline/selectAllTimeline'
       }).then(function (res) {
         that.tableData = res.data.data
         for (const data of that.tableData) {
@@ -131,7 +131,7 @@ export default {
       const that = this
       axios({
         method: 'post',
-        url: 'http://127.0.0.1:8080/timeline/deleteTimelineById',
+        url: that.$url + 'timeline/deleteTimelineById',
         data: {
           id: row.id
         }
@@ -147,7 +147,7 @@ export default {
       const that = this
       axios({
         method: 'post',
-        url: 'http://127.0.0.1:8080/timeline/insertTimeline',
+        url: that.$url + 'timeline/insertTimeline',
         data: that.form
       }).then(function (res) {
         if (res.data.data) {
@@ -165,7 +165,7 @@ export default {
       const that = this
       axios({
         method: 'post',
-        url: 'http://127.0.0.1:8080/timeline/updateTimeline',
+        url: that.$url + 'timeline/updateTimeline',
         data: that.editForm
       }).then(function (res) {
         if (res.data.data) {

@@ -149,7 +149,7 @@ export default {
     getTableData (format) {
       const that = this
       axios({
-        url: 'http://127.0.0.1:8080/markdown/selectAllMarkdown',
+        url: that.$url + 'markdown/selectAllMarkdown',
         method: 'get'
       }).then(function (res) {
         that.tableData = res.data.data
@@ -162,7 +162,7 @@ export default {
     handleEdit (index, row) {
       const that = this
       axios({
-        url: 'http://127.0.0.1:8080/markdown/selectMarkdownById',
+        url: that.$url + 'markdown/selectMarkdownById',
         method: 'post',
         data: {
           id: row.id
@@ -175,7 +175,7 @@ export default {
     handleDelete (index, row) {
       const that = this
       axios({
-        url: 'http://127.0.0.1:8080/markdown/deleteMarkdownById',
+        url: that.$url + 'markdown/deleteMarkdownById',
         method: 'post',
         data: { id: row.id }
       }).then(function (res) {
@@ -186,7 +186,7 @@ export default {
       this.form.time = this.$moment().format('YYYY-MM-DD HH:mm:ss')
       const that = this
       axios({
-        url: 'http://127.0.0.1:8080/markdown/insertMarkdown',
+        url: that.$url + 'markdown/insertMarkdown',
         method: 'post',
         data: that.form
       }).then(function (res) {
@@ -226,7 +226,7 @@ export default {
     onSave () {
       const that = this
       axios({
-        url: 'http://127.0.0.1:8080/markdown/updateMarkdown',
+        url: that.$url + 'markdown/updateMarkdown',
         method: 'post',
         data: that.editForm
       }).then(function (res) {

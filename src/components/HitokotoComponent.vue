@@ -130,7 +130,7 @@ export default {
       const that = this
       axios({
         method: 'get',
-        url: 'http://127.0.0.1:8080/hitokoto/selectAllHitokoto'
+        url: that.$url + 'hitokoto/selectAllHitokoto'
       }).then(function (res) {
         that.tableData = res.data.data
       })
@@ -146,7 +146,7 @@ export default {
       const that = this
       axios({
         method: 'post',
-        url: 'http://127.0.0.1:8080/hitokoto/deleteHitokoto',
+        url: that.$url + 'hitokoto/deleteHitokoto',
         data: {
           id: row.id
         }
@@ -160,7 +160,7 @@ export default {
       const that = this
       axios({
         method: 'post',
-        url: 'http://127.0.0.1:8080/hitokoto/insertHitokoto',
+        url: that.$url + 'hitokoto/insertHitokoto',
         data: that.formData
       }).then(function (res) {
         if (res.data.data) {
@@ -182,7 +182,7 @@ export default {
       const that = this
       axios({
         method: 'post',
-        url: 'http://127.0.0.1:8080/hitokoto/updateHitokoto',
+        url: that.$url + 'hitokoto/updateHitokoto',
         data: that.editData
       }).then(function (res) {
         that.getTableData()

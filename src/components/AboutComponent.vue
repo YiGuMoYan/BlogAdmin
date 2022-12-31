@@ -26,7 +26,7 @@ export default {
     getMarkdown () {
       const that = this
       axios({
-        url: 'http://127.0.0.1:8080/about/selectOneAbout',
+        url: that.$url + 'about/selectOneAbout',
         method: 'get'
       }).then(function (res) {
         that.about = res.data.data
@@ -37,7 +37,7 @@ export default {
       const that = this
       console.log(that.about)
       axios({
-        url: 'http://127.0.0.1:8080/about/updateAbout',
+        url: that.$url + 'about/updateAbout',
         method: 'post',
         data: that.about
       }).then(function (res) {

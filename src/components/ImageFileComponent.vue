@@ -33,7 +33,7 @@ export default {
   data () {
     return {
       value1: false,
-      uploadUrl: 'http://127.0.0.1:8080/blogImageFile/upload/',
+      uploadUrl: this.$url + 'blogImageFile/upload/',
       imageFileUrl: ''
     }
   },
@@ -60,9 +60,9 @@ export default {
   watch: {
     value1 () {
       if (this.value1) {
-        this.uploadUrl = 'http://127.0.0.1:8080/backgroundImageFile/upload'
+        this.uploadUrl = this.$url + 'backgroundImageFile/upload'
       } else {
-        this.uploadUrl = 'http://127.0.0.1:8080/blogImageFile/upload'
+        this.uploadUrl = this.$url + 'blogImageFile/upload'
       }
     }
   }
